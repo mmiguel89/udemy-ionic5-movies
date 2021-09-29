@@ -1,7 +1,7 @@
 # Udemy-Ionic5 - Movies
 - Course: https://www.udemy.com/course/ionic-ios-android-pwa-appstore-playstore-push/
 - Documentation: https://github.com/mmiguel89/udemy-ionic5-docs
-- Lecture: Sección 9: Publicar una aplicación de ionic como PWA
+- Lecture: Sección 10: Aplicación de peliculas
 
 ## Prerequisites (just android, IOS deloy is not considered)
 - Node 16.8.0 (nvm use 16.8.0)
