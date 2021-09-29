@@ -1,0 +1,8 @@
+<ion-content>
+  <app-slideshow-title title="New movies"></app-slideshow-title>
+  <app-slideshow-backdrop [movies]="movies"></app-slideshow-backdrop>
+  <app-slideshow-title title="Billboard"></app-slideshow-title>
+  <app-slideshow-poster [movies]="movies"></app-slideshow-poster>
+  <app-slideshow-title title="Popular"></app-slideshow-title>
+  <app-slideshow-poster-pair [movies]="popularMovies" (moreEvent)="discoverPopular()"></app-slideshow-poster-pair>
+</ion-content>

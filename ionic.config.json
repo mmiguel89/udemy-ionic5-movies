@@ -1,0 +1,7 @@
+{
+  "name": "udemy-ionic5-movies",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

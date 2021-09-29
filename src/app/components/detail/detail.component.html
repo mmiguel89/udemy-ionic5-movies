@@ -1,0 +1,77 @@
+<ion-content *ngIf="detail">
+  <ion-label class="title">
+    <h1>{{detail.title}}</h1>
+  </ion-label>
+  <img [src]="detail.backdrop_path | imagesUrl">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" class="poster_over">
+        <ion-card>
+          <img [src]="detail.poster_path | imagesUrl" class="poster">
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-icon slot="start" name="thumbs-up" color="primary"></ion-icon>
+          <ion-label>Rating</ion-label>
+          <ion-note slot="end" color="primary">{{detail.vote_average}}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="people" color="primary"></ion-icon>
+          <ion-label>Votes</ion-label>
+          <ion-note slot="end" color="primary">{{detail.vote_count}}</ion-note>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+        <ion-label>{{detail.overview  | slice:0:overviewSize}}... </ion-label>
+        <ion-label *ngIf="overviewSize==overviewMin" color="primary" (click)="more()">More</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-chip color="primary" *ngFor="let gender of detail.genres">
+          <ion-label>{{gender.name}}</ion-label>
+        </ion-chip>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+        <ion-label>Actors</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-slides [options]="slidesOptions">
+    <ion-slide *ngFor="let actor of cast">
+      <ion-card class="card-actor">
+        <img [src]="actor.profile_path | imagesUrl: './assets/no-avatar.jpg'">
+        <ion-label class="actor-name">{{actor.name}}</ion-label>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+        Back
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="!dataLocalService.exists(id)" (click)="dataLocalService.addToFavorite(detail)">
+        <ion-icon slot="end" name="star"></ion-icon>
+        Favorite
+      </ion-button>
+      <ion-button *ngIf="dataLocalService.exists(id)" (click)="dataLocalService.removeFromFavorite(detail)">
+        <ion-icon slot="end" name="star"></ion-icon>
+        Not favorite
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
